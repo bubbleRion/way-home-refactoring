@@ -13,7 +13,7 @@ router.get("/", (req, res)=>{
 
     let text = info.data.text
     let writeText = info.data.writeText
-    if(userId !== null && userId !== undefined){
+    if(userId){
         text = info.data.userText
         writeText = info.data.userWriteText
     }

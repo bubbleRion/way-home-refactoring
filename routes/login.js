@@ -14,7 +14,7 @@ const secretInfo = require("../process/protect.js");
 const sessionData = {}
 
 router.get("/", (req, res)=>{
-    res.sendFile(path.join(__dirname, "..pages", "loginPage.html"))
+    res.sendFile(path.join(__dirname ,"..", "pages", "loginPage.html"))
 })
 
 router.post("/", (req,res)=>{

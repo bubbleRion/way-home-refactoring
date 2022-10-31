@@ -7,8 +7,6 @@ const mysql = require("mysql");
 const db = mysql.createConnection(conn);
 
 const info = require("../template/Info.js")
-const template = require("./literal/template.js");
-const { time } = require('console');
 
 router.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname, "../pages", "idFind.html"))
@@ -19,7 +17,9 @@ router.post("/", (req,res)=>{
     db.query(`select * from ${info.table.user}`, (err, results)=>{
         if(err) console.error(err)
         let result = results.map((item)=>{
-            return item.id
+            if(body.name == item.name && body.email == item.email){
+                return item.id
+            }
         })
         let idResult = result.filter((item)=>{
             return item !== undefined

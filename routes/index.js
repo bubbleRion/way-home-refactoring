@@ -8,9 +8,9 @@ const template = require("./literal/template.js");
 router.get("/", (req,res)=>{
     let userId = info.data.userId
     userId = req.session.userID
-    let text = info.data.text
+    let text = info.data.juText
     if(userId){
-        text = info.data.userText
+        text = info.data.juUserText
     }
     res.send(template.indexTemp(text))
 })

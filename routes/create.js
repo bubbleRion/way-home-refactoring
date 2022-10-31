@@ -30,7 +30,6 @@ const upload = multer({
         cb(null, "uploads");
       },
       filename: function (req, file, cb) {
-        console.log(file);
         cb(null, new Date().valueOf() + path.extname(file.originalname));
       },
     }),
@@ -41,7 +40,7 @@ router.post("/", upload.single("image"), (req , res)=>{
     let userId = info.data.userId
     userId = req.session.userId
 
-    db.query(`insert into ${info.table.board}(seq, location, breed, gender, age, isNeutering, name, uniqueness, image, userID) values(${count}, "${body.location}", "${body.breed}", "${body.gender}", "${body.age}", "${body.isNeutering}", "${body.name}", "${body.uniqueness}" , "${req.file.path}"), "${userId}"`, (err)=>{
+    db.query(`insert into ${info.table.board}(seq, location, breed, gender, age, isNeutering, name, uniqueness, image, userID) values(${count}, "${body.location}", "${body.breed}", "${body.gender}", "${body.age}", "${body.isNeutering}", "${body.name}", "${body.uniqueness}" , "${req.file.path}", "${userId}")`, (err)=>{
         if(err) console.error(err)
         res.redirect("/board")
     })

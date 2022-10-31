@@ -51,6 +51,7 @@ router.get("/board:id", (req,res)=>{
             }
             let index = req.params.id
             let result = results.map(item=>{
+                if(req.params.id == item.seq){
                 return `<div>이름 : ${item.name}</div>
                 <div>성별 : ${item.gender}</div>
                 <div>종 : ${item.breed}</div>
@@ -58,12 +59,25 @@ router.get("/board:id", (req,res)=>{
                 <div>중성화 유무 : ${item.isNeutering}</div>
                 <div>잃어버린 장소 : ${item.location}</div>
                 <div>특이사항 : ${item.uniqueness}</div>`
+                }
             })
             
             results.forEach(item=>{
+                let isLogin = userId == item.userID ? `<div>
+                    <form action="/update" method="post">
+                    <input type="hidden" name="seq" value="${item.seq}">
+                    <input type="submit" value="글 수정" class="update">
+                    </form>
+                  </div>
+                  <div>
+                    <form action="/delete" method="post">
+                    <input type="hidden" name="seq" value="${item.seq}">
+                    <input type="submit" value="글 삭제" class="delete">
+                    </form>
+                  </div>` : ""
                 let image = item.image.replace("s", "s/")
                 if(req.params.id == item.seq){
-                    res.send(template.detailTemp(text, item.image.replace("s", "s/"), userId, result, item.seq, commentText, commentInput))
+                    res.send(template.detailTemp(text, image, isLogin, result, commentText, commentInput))
                 }
             })
         })
