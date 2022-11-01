@@ -17,24 +17,28 @@ router.get("/", (req, res)=>{
         if(req.query.result.length > 1){
             fileImages = results.reverse().map(values=>{
                 let image = values.filePath === "" ? "/uploads/1666313512904.jpg" : imageURL + values.filePath
-                return `<a href="lostBoard${values.animalSeq}"><img alt="이미지 준비중" src="${image}"/><a>`
+                return `<a href="lostBoard${values.animalSeq}"><img alt="이미지" src="${image}"/><a>`
             })
         }
         else{
-            fileImages = "검색어는 2글자 이상이어야 합니다."
+            fileImages = "<h1>검색어는 2글자 이상이어야 합니다.</h1>"
         }
-
         let images = ""
-
-        if(fileImages.isArray){
+        let image
+        
+        if(typeof(fileImages) == "string"){
+            image = fileImages
+        }
+        else if(typeof(fileImages) === "object"){
             const set = new Set(fileImages)
             let fileImage = [...set]
-            fileImage.forEach(item=> images += item)
+            images = fileImage.map(item=> item)
+            image = images.join("")
         }
         else{
-            images = fileImages
+            image = ""
         }
-        
+
         let userId = req.session.userID
         let text = info.data.text
         if(userId){
@@ -42,7 +46,7 @@ router.get("/", (req, res)=>{
         }
         
 
-        res.send(template.lostSearchTemp(text, images))
+        res.send(template.lostSearchTemp(text, image))
     })
 })
 module.exports = router

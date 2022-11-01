@@ -24,6 +24,10 @@
   font-size: 48px;
   margin-left: 20px;
 }
+#root > header > .logo{
+  text-decoration: none;
+  color: #fff;
+}
 /**flex로 정렬 방식을 바꾸었다*/
 main > form {
   width: inherit;

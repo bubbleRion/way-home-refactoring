@@ -22,7 +22,7 @@ router.get("/", (req, res)=>{
         if(err) console.error(err)
         let searchResult = ""
         let searchResultArray
-        if(req,query.result.length  >1){
+        if(req.query.result.length > 1){
             searchResultArray = results.reverse().map(item=>{
                 return `<a href="board${item.seq}"><img src="${item.image.replace("s", "s/")}" alt=""/><a>`
             })

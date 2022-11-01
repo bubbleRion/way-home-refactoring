@@ -8,7 +8,7 @@ const info = require("../template/Info.js")
 const template = require("./literal/template.js");
 
 router.get("/lostBoard:id", (req,res)=>{
-    let userId = req.session.userId
+    let userId = req.session.userID
     const imageURL = "http://www.daejeon.go.kr/"
     db.query(`select * from ${info.table.lostBoard}`, (err, results)=>{
         if(err) console.error(err)

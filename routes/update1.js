@@ -9,9 +9,9 @@ const template = require("./literal/template.js");
 
 router.post("/", (req , res)=>{
     let userId = req.session.userID
-    db.query(`select * form ${info.table.board} where seq=${req.body.seq}`, (err,results)=>{
+    db.query(`select * from ${info.table.board} where seq=${req.body.seq}`, (err,results)=>{
         if(err) console.error(err)
-        results.forEach(item=>template(req.body.seq, userId, item.name, item.gender, item.breed, item.age, item.isNeutering, item.location, item.uniqueness))
+        results.forEach(item=>res.send(template.updateTemp1(req.body.seq, userId, item.name, item.gender, item.breed, item.age, item.isNeutering, item.location, item.uniqueness)))
     })
 })
 module.exports = router;

@@ -1,4 +1,5 @@
 const template = {
+  // pwFind의 스타일
   findStyleTemp : `<style>
   *{
       margin: 0;
@@ -122,7 +123,7 @@ const template = {
   }
 </style>`,
 
- 
+//  실종동물 게시판의 템플릿
   boardTemp : (login, write, data) =>{
     return `
     <!DOCTYPE html>
@@ -173,6 +174,7 @@ const template = {
     </body>
     </html>`   
 },
+// 글작성 페이지의 템플릿
 createTemp : (count) =>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -187,7 +189,7 @@ createTemp : (count) =>{
     <div id="root">
       <!--? 각 모든 페이지가 공유하는 헤더 몇몇 필요없는 부분의 버튼을 제거하는것을 제외하고 값이 동일하다-->
       <header>
-        <div class="logo">Way Home</div>
+        <div class="logo"><a href="/">Way Home</a></div>
       </header>
       <main>
         <!--? 정보 작성 공간 form태그로 input테그에서 작성된 정보를 전송 DB에 저장하는 역할을 진행한다. 드래그인 드롭으로 이미지를 삽입할 공간의 할당과 등록된 이미지의 이름을 출력할 장소 구현-->
@@ -220,6 +222,7 @@ createTemp : (count) =>{
   </body>
   </html>`
 },
+// 메인 페이지의 템플릿
 indexTemp : (login) =>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -260,6 +263,7 @@ indexTemp : (login) =>{
   </body>
   </html>`
 },
+// 실종동물 세부 페이지의 템플릿
 detailTemp : (login, img, isLogin, result, commentTextBox, commentInputBox) =>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -314,6 +318,7 @@ detailTemp : (login, img, isLogin, result, commentTextBox, commentInputBox) =>{
     
     </html>`
 },
+// 유기동물 페이지의 템플릿
 lostBoardTemp : (login, images) =>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -360,6 +365,7 @@ lostBoardTemp : (login, images) =>{
 </body>
 </html>`
 },
+// 유기동물의 세부 페이지의 템플릿
 lostDetailTemp : (login, images, result, commentInput) => {
   return `<!DOCTYPE html>
   <html lang="en">
@@ -406,6 +412,7 @@ lostDetailTemp : (login, images, result, commentInput) => {
   
   </html>`
 },
+// 유기동물 검색 페이지의 템플릿
 lostSearchTemp : (login, images) =>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -452,6 +459,7 @@ lostSearchTemp : (login, images) =>{
   </body>
   </html>`
 },
+// 비밀번호 찾기의 템플릿
 pwFindTemp : (login)=>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -489,6 +497,7 @@ pwFindTemp : (login)=>{
   </body>
   </html>`
 },
+// 실종 동물 검색 페이지의 템플릿
 searchTemp : (login, write, result)=>{
   return `<!DOCTYPE html>
   <html lang="en">
@@ -537,6 +546,7 @@ searchTemp : (login, write, result)=>{
   </body>
   </html>`
 },
+// 글 수정 페이지의 템플릿
 updateTemp1 : (seq, userID, name, gender, breed, age, isNeutering, location, uniqueness)=>{
   return `<!DOCTYPE html>
   <html lang="en">

@@ -109,7 +109,7 @@ router.get("/", async(req,res)=>{
                 return Number(b.animlSeq) - Number(a.animalSeq)
             })
             let newData = dbData.filter(item => Number(item.animalSeq) > Number(results[0].animalSeq))
-            let adoptionData = dbData.filter((item, index)=> Number(item.changeAdoption) !== Number(results[index + (pageCountNum - 1) * 10].adoptionStatusCd))
+            let adoptionData = dbData.filter((item, index)=> item.changeAdoption !== results[index + (pageCountNum - 1) * 10].adoptionStatusCd)
             let fileImageData = dbData.filter((item, index)=> item.filePath !== results[index + (pageCountNum -1) * 10].filePath)
 
             // new data add
